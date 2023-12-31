@@ -1,7 +1,6 @@
 import { process } from '/env'
 import { Configuration, OpenAIApi } from 'openai'
 
-
 const setupTextarea = document.getElementById('setup-textarea')
 const setupInputContainer = document.getElementById('setup-input-container')
 const movieBossText = document.getElementById('movie-boss-text')
@@ -27,4 +26,3 @@ async function fetchBotReply() {
     })
     movieBossText.innerText = response.data.choices[0].text.trim()
 }
-// [{text: " Excited, Enthusiastic, Driven!",
