@@ -23,8 +23,8 @@ document.getElementById("send-btn").addEventListener("click", () => {
 async function fetchBotReply(outline) {
     const response = await openai.createCompletion({
         model: 'text-davinci-003',
-        prompt: `Generate a short message to enthusiastically say "${outline}" sounds interesting and that you need some minutes to think about it. Mention one aspect of the sentence.`,
-        // max_tokens: 60    
+        prompt: `Generate a short message to enthusiastically say "${outline}" sounds interesting and that you need some minutes to think about it. Mention one aspect of the sentence."`,
+        max_tokens: 60 // defaults to 16
     })
     movieBossText.innerText = response.data.choices[0].text.trim()
     console.log(response)
