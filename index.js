@@ -17,15 +17,31 @@ document.getElementById("send-btn").addEventListener("click", () => {
         setupInputContainer.innerHTML = `<img src="images/loading.svg" class="loading" id="loading">`
         movieBossText.innerText = `Ok, just wait a second while my digital brain digests that...`
         fetchBotReply(userInput)
+        fetchSynopsis(userInput)
     }
 })
 
 async function fetchBotReply(outline) {
     const response = await openai.createCompletion({
         model: 'text-davinci-003',
-        prompt: `Generate a short message to enthusiastically say "${outline}" sounds interesting and that you need some minutes to think about it. Mention one aspect of the sentence."`,
-        max_tokens: 60 // defaults to 16
+        prompt: `Generate a short message to enthusiastically say "${outline}" sounds interesting and that you need some minutes to think about it. Mention one aspect of the sentence.`,
+        max_tokens: 60
     })
     movieBossText.innerText = response.data.choices[0].text.trim()
     console.log(response)
+}
+
+async function fetchSynopsis(outline) {
+    const response = await openai.createCompletion({
+        model: 'text-davinci-003',
+        /* 
+        Challenge:
+          1. Refactor the prompt to use one or more examples. 
+          2. Remember to separate the instruction from the 
+             example with ### or '''.
+        */
+        prompt: `Generate an engaging, professional and marketable movie synopsis based on the following idea: ${outline}`,
+        max_tokens: 700
+    })
+    document.getElementById('output-text').innerText = response.data.choices[0].text.trim()
 }
