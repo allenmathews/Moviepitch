@@ -34,12 +34,7 @@ async function fetchBotReply(outline) {
 async function fetchSynopsis(outline) {
     const response = await openai.createCompletion({
         model: 'text-davinci-003',
-        /* 
-        Challenge:
-          1. Refactor the prompt to use one or more examples. 
-          2. Remember to separate the instruction from the 
-             example with ### or '''.
-        */
+
         prompt: `Generate an engaging, professional and marketable movie synopsis based on the following idea: ${outline}`,
         max_tokens: 700
     })
