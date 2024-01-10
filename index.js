@@ -14,6 +14,5 @@ document.getElementById("submit-btn").addEventListener("click", () => {
 })
 
 async function generateImage(prompt) {
-    // AI here!
     outputImg.innerHTML = `<img src="${response.data.data[0].url}">`
 }
