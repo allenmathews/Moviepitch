@@ -14,5 +14,11 @@ document.getElementById("submit-btn").addEventListener("click", () => {
 })
 
 async function generateImage(prompt) {
-    outputImg.innerHTML = `<img src="${response.data.data[0].url}">`
+    const response = await openai.createImage({
+        prompt: prompt,
+        n: 1,
+        size: '256x256',
+        response_format: 'b64_json'
+    })
+    outputImg.innerHTML = `<img src="data:image/png;base64,${response.data.data[0].b64_json}">`
 }
