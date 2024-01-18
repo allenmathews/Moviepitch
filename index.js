@@ -93,14 +93,6 @@ async function fetchStars(synopsis) {
 async function fetchImagePromt(title, synopsis) {
     const response = await openai.createCompletion({
         model: 'text-davinci-003',
-        /*
-        Challenge:
-        1. Write a prompt that will generate an image prompt that we can 
-           use to get artwork for our movie idea.
-        ⚠️ OpenAI has no knowledge of our characters. So the image prompt 
-           needs descriptions not names!
-        2. Add temperature if you think it's needed.
-        */
         prompt: `Give a short description of an image which could be used to advertise a movie based on a title and synopsis. The description should be rich in visual detail but contain no names.
     ###
     title: Love's Time Warp
@@ -118,5 +110,21 @@ async function fetchImagePromt(title, synopsis) {
         temperature: 0.8,
         max_tokens: 100
     })
-    console.log(response.data.choices[0].text.trim())
+    fetchImageUrl(response.data.choices[0].text.trim())
+}
+
+async function fetchImageUrl(imagePrompt) {
+    const response = await openai.createImage({
+        prompt: `${imagePrompt}. There should be no text in this image.`,
+        n: 1,
+        size: '256x256',
+        response_format: 'b64_json'
+    })
+    document.getElementById('output-img-container').innerHTML = `<img src="data:image/png;base64,${response.data.data[0].b64_json}">`
+    setupInputContainer.innerHTML = `<button id="view-pitch-btn" class="view-pitch-btn">View Pitch</button>`
+    document.getElementById('view-pitch-btn').addEventListener('click', () => {
+        document.getElementById('setup-container').style.display = 'none'
+        document.getElementById('output-container').style.display = 'flex'
+        movieBossText.innerText = `This idea is so good I'm jealous! It's gonna make you rich for sure! Remember, I want 10% 💰`
+    })
 }
