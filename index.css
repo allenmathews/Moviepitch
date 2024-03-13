@@ -2,13 +2,14 @@
     --white: #ffffff;
     --light: whitesmoke;
     --light-grey: #e8e8e8;
-    --pink: #ff176b;
+    --pink: #fd2574;
     --medium-dark: #777;
     --dark: #242526;
     --border-rad-lg: 15px;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -24,6 +25,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+
 
 /* =================
       Typography 
@@ -41,6 +43,7 @@ h2 {
 p {
     line-height: 1.35em;
 }
+
 
 /* =================
       Sections 
@@ -81,6 +84,7 @@ section {
     box-shadow: 0px 1px 18px 3px var(--dark);
     max-width: 420px;
 }
+
 
 /* =================
       Setup 
@@ -165,6 +169,7 @@ textarea::placeholder {
     opacity: 0.8;
 }
 
+
 /* larger mobiles+ */
 
 @media(min-width: 380px) {
@@ -190,10 +195,10 @@ textarea::placeholder {
     }
 }
 
+
 /* =================
       Buttons & SVG 
      ================= */
-
 
 button {
     border: none;
@@ -234,6 +239,7 @@ img.loading {
     filter: none;
 }
 
+
 /* =================
       Output 
      ================= */
@@ -251,6 +257,7 @@ img.loading {
     border-radius: var(--border-rad-lg);
     box-shadow: 1px 1px 5px 1px var(--dark);
 }
+
 
 /* =================
       Footer 
