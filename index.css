@@ -4,7 +4,7 @@
     --light-grey: #e8e8e8;
     --pink: #ae5576;
     --medium-dark: #5a3c3c;
-    --dark: #090910;
+    --dark: rgb(49, 49, 94);
     --border-rad-lg: 17px;
 }
 
@@ -176,19 +176,15 @@ textarea::placeholder {
     .setup-input-container {
         padding-top: 0;
     }
-
     .speech-bubble-ai:before {
         top: 92px;
     }
-
     .speech-bubble-ai:after {
         top: 96px;
     }
-
     .speech-bubble-ai>p {
         font-size: 100%;
     }
-
     textarea::placeholder {
         font-size: 100%;
         opacity: 0.8;
